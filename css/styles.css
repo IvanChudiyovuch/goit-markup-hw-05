@@ -179,6 +179,37 @@ img {
   margin-right: 0;
 }
 
+/* модалка */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+
+  background: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
 /*  Секцыя герой */
 
 .hero {
@@ -488,6 +519,45 @@ img {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
   cursor: pointer;
+}
+
+.work-card-thumb {
+  position: relative;
+}
+
+.work-card-thumb::before {
+  position: absolute;
+
+  display: inline-block;
+  content: '';
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 150, 243, 0.9);
+  opacity: 0;
+}
+
+.work-card:hover .work-text-animation,
+.work-card:hover .work-card-thumb::before,
+.work-card:focus .work-text-animation,
+.work-card:focus .work-card-thumb::before {
+  opacity: 1;
+}
+
+.work-text-animation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+
+  padding: 63px 24px;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(28 / 18);
+  letter-spacing: 0.03em;
+  color: #ffffff;
 }
 
 .work-item-content {
