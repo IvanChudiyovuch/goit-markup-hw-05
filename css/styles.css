@@ -4,6 +4,8 @@
 /* основной цвет фона background: #FFFFFF; */
 
 :root {
+  --main-transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   --main-color: #212121;
   --secondary-color: #757575;
   --accent-color: #2196f3;
@@ -69,6 +71,8 @@ img {
 }
 
 .logo {
+  transition: var(--main-transition);
+
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 26px;
@@ -92,6 +96,7 @@ img {
 }
 
 .logo-dark {
+  transition: var(--main-transition);
   color: #000000;
 }
 
@@ -111,6 +116,8 @@ img {
 }
 
 .site-nav .link {
+  transition: var(--main-transition);
+
   color: var(--main-color);
 }
 
@@ -120,7 +127,21 @@ img {
 }
 
 .site-nav .link.current {
+  position: relative;
   color: var(--accent-color);
+}
+
+.current::after {
+  position: absolute;
+  left: 0;
+  bottom: -28px;
+  content: '';
+
+  width: 100%;
+  height: 4px;
+
+  background: #2196f3;
+  border-radius: 2px;
 }
 
 .header-list {
@@ -129,6 +150,8 @@ img {
 }
 
 .link {
+  transition: var(--main-transition);
+
   display: flex;
   align-items: center;
   color: var(--secondary-color);
@@ -212,6 +235,8 @@ img {
 }
 
 .hero-btn {
+  transition: background-color 250ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   min-width: 200px;
   border: transparent;
   padding: 10px 32px;
@@ -231,7 +256,6 @@ img {
 .hero-btn:hover,
 .hero-btn:focus {
   background-color: #188ce8;
-  color: var(--active-btn-text-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }
@@ -299,6 +323,31 @@ img {
 
 .occupation-item:not(:last-child) {
   margin-right: var(--card-list-gap);
+}
+
+.ocupation-thumb {
+  position: relative;
+}
+
+.occupation-item-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(47, 48, 58, 0.8);
 }
 
 /*  секция наша команда */
@@ -369,6 +418,8 @@ img {
 }
 
 .team-socials-link {
+  transition: background-color 250ms, fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   width: 44px;
   height: 44px;
   fill: #afb1b8;
@@ -405,6 +456,8 @@ img {
 }
 
 .customer-link {
+  transition: border-color 250ms, fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   width: 170px;
   height: 92px;
   border: 1px solid #afb1b8;
@@ -439,6 +492,9 @@ img {
 }
 
 .section-btn {
+  transition: color 250ms, background-color 250ms, box-shadow 250ms,
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   border-radius: 4px;
   padding: 6px 22px;
   border: none;
@@ -479,6 +535,7 @@ img {
 }
 
 .work-card {
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
   background: #ffffff;
 }
@@ -490,43 +547,33 @@ img {
   cursor: pointer;
 }
 
+.work-card:hover .work-text-animation,
+.work-card:focus .work-text-animation {
+  transform: translateY(0);
+  cursor: pointer;
+}
+
 .work-card-thumb {
   position: relative;
-}
-
-.work-card-thumb::before {
-  position: absolute;
-
-  display: inline-block;
-  content: '';
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(33, 150, 243, 0.9);
-  opacity: 0;
-}
-
-.work-card:hover .work-text-animation,
-.work-card:hover .work-card-thumb::before,
-.work-card:focus .work-text-animation,
-.work-card:focus .work-card-thumb::before {
-  opacity: 1;
+  overflow: hidden;
 }
 
 .work-text-animation {
   position: absolute;
   top: 0;
   right: 0;
-  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   padding: 63px 24px;
+  width: 100%;
 
   font-weight: 400;
   font-size: 18px;
   line-height: calc(28 / 18);
   letter-spacing: 0.03em;
   color: #ffffff;
+  background: rgba(33, 150, 243, 0.9);
 }
 
 .work-item-content {
@@ -571,6 +618,8 @@ img {
 }
 
 .logo-white {
+  transition: var(--main-transition);
+
   color: #ffffff;
 }
 
@@ -587,12 +636,9 @@ img {
   margin-bottom: 9px;
 }
 
-.address .link:hover,
-.address .link:focus {
-  color: var(--accent-color);
-}
-
 .footer-link-adress {
+  transition: var(--main-transition);
+
   font-style: normal;
   font-size: 14px;
   line-height: 1.71px;
@@ -606,6 +652,8 @@ img {
 }
 
 .footer-link {
+  transition: var(--main-transition);
+
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
@@ -638,6 +686,7 @@ img {
 }
 
 .footer-socials-link {
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   width: 44px;
   height: 44px;
   fill: #ffffff;
@@ -659,13 +708,13 @@ img {
   position: fixed;
   top: 0;
   left: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   width: 100vw;
   height: 100vh;
 
   background: rgba(0, 0, 0, 0.2);
-
-  transition: opacity 250ms, visibility 250ms;
 }
 
 .backdrop.is-hidden {
@@ -674,11 +723,16 @@ img {
   visibility: hidden;
 }
 
+.backdrop.is-hidden .modal {
+  transform: rotate(180deg) scale(0.1);
+}
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(0) scale(1);
+  transition: transform 250ms;
 
   width: 528px;
   height: 581px;
